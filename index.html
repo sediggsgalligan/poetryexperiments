@@ -1,19 +1,7 @@
-<!-- index.html -->
 <html>
     <head>
-        ...
         <style>
             body {
-                /* height: 3000px;
-                -ms-scroll-snap-type: y mandatory;
-                scroll-snap-type: y mandatory;
-                scroll-snap-points-y: repeat(500px); */
-                /* height: 3000px; */
-                /* overflow-y: scroll;
-                max-height: 100vh;
-                scroll-snap-type: mandatory;
-                scroll-snap-points-y: repeat(500px);
-                scroll-snap-type: y mandatory; */
                 overflow-y: hidden;
             }
 
@@ -22,7 +10,6 @@
                 max-height: 100vh;
                 max-width: 100vw;
                 scroll-snap-type: mandatory;
-                /* scroll-snap-points-y: repeat(500px); */
                 scroll-snap-type: y mandatory;
             } 
 
@@ -48,7 +35,6 @@
                 width: 100px;
                 height: 100px;
                 border-radius: 50%;
-                /* background-color: greenyellow; */
                 text-align: center;
                 vertical-align: middle;
                 display: table-cell;
@@ -59,7 +45,6 @@
                 width: 100px;
                 height: 100px;
                 border-radius: 50%;
-                /* background-color: greenyellow; */
                 text-align: center;
                 vertical-align: middle;
                 display: table-cell;
@@ -123,90 +108,6 @@
             <div class="my_snapping_block"></div>
             <div class="my_snapping_block"></div>
 
-
-
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-
-
-
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-
-
-
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-            <div class="my_snapping_block"></div>
-
         </div>
         <script>
             document.onscroll = function () {
@@ -217,34 +118,29 @@
                 scrollRotate();
             });
 
-            document.getElementById("scroll_surrogate").scrollTop = 10_000;
-
-
             function scrollRotate() {
                 let image = document.getElementById("back");
                 Y = document.getElementById("scroll_surrogate").scrollTop
-                // Y = window.pageYOffset
 
-                Y = Y / 210 * 18
-                // console.log(Y)
+                rot = (Y) / 210 * 18
+                if (rot >= 360 - 18) {
+                    rot = 360-18
+                }
+                Y = -rot + 2*18
+                
+                console.log(Y)
                 image.style.transform = "rotate(" + Y + "deg)";
             }
 
             document.getElementById('mask').onchange = function(e) {
-                // Get the first file in the FileList object
                 var imageFile = this.files[0];
-                // get a local URL representation of the image blob
                 var url = window.URL.createObjectURL(imageFile);
-                // Now use your newly created URL!
                 document.getElementById("back").src = url;
             }
 
             document.getElementById('poem').onchange = function(e) {
-                // Get the first file in the FileList object
                 var imageFile = this.files[0];
-                // get a local URL representation of the image blob
                 var url = window.URL.createObjectURL(imageFile);
-                // Now use your newly created URL!
                 document.getElementById("front").src = url;
             }
 
